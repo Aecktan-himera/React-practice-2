@@ -1,0 +1,147 @@
+.header {
+  width: 100%;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  height: 64px; 
+}
+.header-container {
+  margin: 0 auto;
+  display: flex;
+  max-width: 1440px;
+  padding: 14px 32px;
+  align-items: center;
+  font-family: "Inter", sans-serif;
+}
+
+a,
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo-text {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 133%;
+  letter-spacing: -0.03em;
+  text-align: center;
+  color: #0a0a0a;
+  transition: opacity 0.2s;
+}
+.logo-text:hover {
+  opacity: 0.7;
+}
+
+.logo-container {
+  max-width: 106px; 
+}
+
+
+.filter-buttons {
+  display: flex;
+  max-width: 167px;
+  justify-content: space-between;
+  margin-left: 32px; 
+}
+
+.menu-btn {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+}
+
+.menu-btn.active {
+  color: #0a0a0a;
+}
+
+.menu-btn.non-active {
+  color: #717182;
+}
+
+.btn {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.buttons-container {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.right-btn {
+  width: 36px;
+  height: 36px;
+}
+
+/* 1024 – 1279px */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header-container {
+    max-width: 1264px;
+  }
+}
+
+/* 640 – 1023px */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .header-container {
+    max-width: 1008px;
+  }
+}
+
+/* 360 – 639px */
+@media (min-width: 360px) and (max-width: 639px) {
+  .header {
+    height: auto; 
+  }
+  .header-container {
+    max-width: 624px;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    align-items: center;
+    align-content: flex-start;
+    height: 144px;
+  }
+
+  .logo-container {
+    order: 0;
+  }
+
+  .buttons-container {
+    order: 1;
+    margin-left: 0;
+    display: flex;
+    align-items: center;
+  }
+
+  .filter-buttons {
+    order: 2;
+    flex-basis: 100%;
+    max-width: 100%;
+    margin: 13px 0;
+    display: flex; 
+    justify-content: space-between; 
+    height: 67px;
+    align-items: center;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+ 
+  .filter-buttons .menu-btn {
+    flex: 1; 
+    text-align: center;
+  }
+
+  .menu-btn {
+    height: 42px;
+  }
+
+  .menu-btn.active {
+    border-bottom: 2px solid #0a0a0a;
+    padding: 0px 0px 2px;
+  }
+}

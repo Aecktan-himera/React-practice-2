@@ -1,0 +1,79 @@
+.filters-container {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 17px 17px 1px;
+  width: 256px;
+  height: 316px;
+  margin-bottom: 16px;
+}
+
+.filters-heading {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 150%;
+  color: #0a0a0a;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.filters-label {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  color: #0a0a0a;
+}
+
+.brand-select {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 1px;
+  width: 100%;
+  height: 42px;
+  background: #f3f3f5;
+  margin-bottom: 24px;
+  margin-top: 8px;
+}
+
+.brand-option {
+  font-style: inherit;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.price-range {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.min-range,
+.max-range {
+  width: 100%;
+  margin-bottom: 24px;
+  height: 42px;
+}
+
+.filters-apply {
+  width: 100%;
+  height: 40px;
+}
+
+.special-deal {
+  border-radius: 10px;
+  width: 256px;
+  height: 147px;
+  background: linear-gradient(90deg, #d4183d 0%, rgba(212, 24, 61, 0.8) 100%);
+  font-family: "Inter", sans-serif;
+  padding: 10px;
+}
+
+/* Для экранов, где aside становится на всю ширину */
+@media (min-width: 360px) and (max-width: 1023px) {
+  .filters-container,
+  .special-deal {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}

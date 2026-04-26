@@ -1,0 +1,36 @@
+/* Базовый стиль кнопки */
+.btn {
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 150%;
+  text-align: center;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Состояние disabled */
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Фокус (доступность) */
+.btn:focus-visible {
+  outline: 2px solid #4f9cf9;
+  outline-offset: 2px;
+}
+
+/* ===== Варианты (variants) ===== */
+
+/* Primary (основная кнопка) */
+.btn--primary {
+  background: #030213;
+  border-color: #030213;
+  color: white;
+  border-radius: 10px;
+}
