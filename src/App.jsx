@@ -1,11 +1,8 @@
-import './App.css'
-import Home from './pages/Home'
+import "./App.css";
+import Container from "./components/Container";
 
 function App() {
- 
-  return (
-    <Home />
-  )
+  return <Container />;
 }
 
-export default App
+export default App;

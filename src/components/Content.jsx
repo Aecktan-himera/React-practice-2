@@ -1,55 +1,51 @@
-import { useMemo } from "react";
-import Sidebar from "../components/Sidebar";
-import ProductList from "./ProductList";
-import { products } from "../data/products";
+import TvListing from "../pages/TvListing";
+import PhoneListing from "../pages/PhoneListing";
+import LaptopListing from "../pages/LaptopListing";
+import Cart from "../pages/Cart";
 import "../styles/Content.css";
 
-function Content({
-  activeCategory, // пока не используется
-  selectedBrand,
-  onBrandChange,
-  sortOrder,
-  onSortOrderChange,
-}) {
-  const filteredProducts = useMemo(
-    () => products.filter((p) => p.category === "tv"),
-    [],
-  );
-
-  const brands = useMemo(
-    () => [...new Set(products.map((p) => p.brand))],
-    [products],
-  );
-
+const Content = ({ pageType, setPageType, cart, onCartChange }) => {
   return (
     <div className="wrapper">
-      <aside>
-        <Sidebar
-          brands={brands}
-          selectedBrand={selectedBrand}
-          onBrandChange={onBrandChange}
-        />
-      </aside>
-      <main>
-        <div className="sort-bar">
-          <p className="total-amount">{filteredProducts.length} products</p>
-          <label className="sort-by" htmlFor="product-select">
-            Sort by:
-            <select
-              className="product-select"
-              value={sortOrder}
-              onChange={(e) => onSortOrderChange(e.target.value)}
-            >
-              <option value=""></option>
-              <option value="price-asc">Price: Low to High</option>
-              <option value="price-desc">Price: High to Low</option>
-            </select>
-          </label>
-        </div>
-        <ProductList products={filteredProducts} />
-      </main>
+        {pageType === "tv" && (
+          <TvListing
+            cart={cart}
+            onCartChange={onCartChange}
+            pageType={pageType}
+            setPageType={setPageType}
+          />
+        )}
+        {pageType === "phone" && (
+          <PhoneListing
+            cart={cart}
+            onCartChange={onCartChange}
+            pageType={pageType}
+            setPageType={setPageType}
+          />
+        )}
+        {pageType === "laptop" && (
+          <LaptopListing
+            cart={cart}
+            onCartChange={onCartChange}
+            pageType={pageType}
+            setPageType={setPageType}
+          />
+        )}
+        {pageType === "cart" && (
+          <Cart
+            cart={cart}
+            onCartChange={onCartChange}
+            pageType={pageType}
+            setPageType={setPageType}
+          />
+        )}
     </div>
   );
+
+function SidebarWithKey({ pageType }) {
+  return null;
 }
+
+};
 
 export default Content;

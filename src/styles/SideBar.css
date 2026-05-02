@@ -65,7 +65,8 @@
   height: 147px;
   background: linear-gradient(90deg, #d4183d 0%, rgba(212, 24, 61, 0.8) 100%);
   font-family: "Inter", sans-serif;
-  padding: 10px;
+  padding: 16px;
+  position: absolute;
 }
 
 /* Для экранов, где aside становится на всю ширину */
