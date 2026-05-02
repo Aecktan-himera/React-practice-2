@@ -30,11 +30,7 @@ function ProductCard({ product, cartQuantity = 0, onCartChange }) {
   };
 
   const decrement = () => {
-    if (cartQuantity === 1) {
-      onCartChange(id, 0); // removes from cart
-    } else {
       onCartChange(id, cartQuantity - 1);
-    }
   };
 
   return (
