@@ -2,7 +2,7 @@
   width: 100%;
   margin: 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  height: 64px; 
+  height: 64px;
 }
 .header-container {
   margin: 0 auto;
@@ -36,15 +36,21 @@ a:active {
 }
 
 .logo-container {
-  max-width: 106px; 
+  max-width: 106px;
 }
 
+.logo-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
 
 .filter-buttons {
   display: flex;
   max-width: 167px;
   justify-content: space-between;
-  margin-left: 32px; 
+  margin-left: 32px;
 }
 
 .menu-btn {
@@ -77,6 +83,24 @@ a:active {
 .right-btn {
   width: 36px;
   height: 36px;
+  position: relative;
+  margin-left: 10px;
+}
+
+.cart-badge {
+  position: absolute;
+  top: 0;
+  right: -8px;
+  border-radius: 33554400px;
+  width: 20px;
+  height: 20px;
+  background: #030213;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 150%;
+  text-align: center;
+  color: #fff;
+  
 }
 
 /* 1024 – 1279px */
@@ -96,12 +120,12 @@ a:active {
 /* 360 – 639px */
 @media (min-width: 360px) and (max-width: 639px) {
   .header {
-    height: auto; 
+    height: auto;
   }
   .header-container {
     max-width: 624px;
     flex-wrap: wrap;
-    justify-content: space-between; 
+    justify-content: space-between;
     align-items: center;
     align-content: flex-start;
     height: 144px;
@@ -123,16 +147,15 @@ a:active {
     flex-basis: 100%;
     max-width: 100%;
     margin: 13px 0;
-    display: flex; 
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     height: 67px;
     align-items: center;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 
- 
   .filter-buttons .menu-btn {
-    flex: 1; 
+    flex: 1;
     text-align: center;
   }
 

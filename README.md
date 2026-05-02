@@ -1,16 +1,67 @@
-# React + Vite
+```markdown
+# Структура компонентов
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+```text
+App
+ └─ Container  (state: pageType, cart)
+      │
+      ├─ Header  (props: pageType, setPageType, cart)
+      │    ├─ использует cart для вычисления cartItemCount (бейдж)
+      │    └─ кнопки вызывают setPageType('tv'|'phone'|'laptop'|'cart')
+      │
+      ├─ Content  (props: pageType, setPageType, cart, onCartChange)
+      │    │
+      │    └─ рендерит одну из страниц по значению pageType:
+      │         ├─ TvListing    (props: cart, onCartChange)
+      │         ├─ PhoneListing (props: cart, onCartChange)
+      │         ├─ LaptopListing(props: cart, onCartChange)
+      │         └─ Cart         (props: cart, onCartChange, setPageType)
+      │
+      │    Внутри каждого ***Listing (локальные состояния фильтров и сортировки):
+      │         state: appliedFilters { brand, minPrice, maxPrice }, sortOrder
+      │         │
+      │         ├─ Sidebar  (props: brands, onApplyFilters)
+      │         │    └─ локальные состояния brand, minPrice, maxPrice до нажатия Apply
+      │         │
+      │         └─ ProductList (props: products (отфильтрованные), cart, onCartChange)
+      │               └─ ProductCard (props: product, cartQuantity, onCartChange)
+      │                    └─ локальные состояния: currentImage, isFavorite
+      │
+      │    Внутри Cart:
+      │         └─ CartItem (props: product, quantity, onCartChange)
+      │
+      └─ Footer  (статический, без пропсов состояния)
+```
 
-Currently, two official plugins are available:
+## Глобальное состояние в Container
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **pageType** – определяет текущую страницу (`'tv'`, `'phone'`, `'laptop'`, `'cart'`).
+- **cart** – объект вида `{ [productId]: quantity }`.
 
-## React Compiler
+Функция изменения корзины `handleCartChange` определена в `Container` и передаётся через `onCartChange` в `Content`, а оттуда – в листинги и корзину. Она напрямую обновляет глобальный `cart`.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Локальные состояния страниц-листингов
 
-## Expanding the ESLint configuration
+(TvListing, PhoneListing, LaptopListing)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **appliedFilters** – применяются только по клику «Apply Filters».
+- **sortOrder** – сразу влияет на отображаемый список.
+
+Эти состояния сбрасываются при переходе между категориями, потому что компоненты страниц полностью пересоздаются (в `Content` используется условный рендеринг `{pageType === 'tv' && <TvListing .../>}`).
+
+## Поток данных корзины
+
+```
+Container → Content → страница → ProductList → ProductCard → кнопка "Add to Cart" / счётчик
+   ↑                                                                                    |
+   └────────────────────── onCartChange(id, newQuantity) ───────────────────────────────┘
+```
+
+В корзине аналогично: `Cart → CartItem → кнопки +/−/удалить → onCartChange`.
+
+## Поток данных фильтрации
+
+1. `Sidebar` хранит временные значения `brand`/`minPrice`/`maxPrice` (локально).
+2. При клике на «Apply Filters» вызывает `onApplyFilters` (полученный из листинга), который обновляет `appliedFilters` на уровне листинга.
+3. `useMemo` в листинге пересчитывает `filteredProducts` на основе исходного списка, фильтров и сортировки, после чего передаёт итоговый массив в `ProductList`.
+```

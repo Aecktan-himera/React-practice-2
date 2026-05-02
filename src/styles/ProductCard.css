@@ -181,20 +181,39 @@
   gap: 12px;
   margin-top: auto;
 }
-.product-card__counter button {
+
+.btn-minus {
   width: 40px;
   height: 40px;
   border-radius: 10px;
-  padding: 0px 12px;
-  border: 1px solid #ddd;
-  background: #f3f3f5;
+  padding: 0px 8px;
+  background: #eceef2;
+  font-family: inherit;
   font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
 }
+
+.btn-plus {
+  font-family: inherit;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  padding: 0px 8px;
+  background: #030213;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
 .product-card__counter span {
   font-size: 16px;
   line-height: 150%;

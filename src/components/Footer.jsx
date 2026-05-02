@@ -38,7 +38,7 @@ function Footer() {
                 Subscribe for exclusive deals
               </label>
               <br />
-              <Input className="subscribe-input"></Input>
+              <Input className="subscribe-input" id="subscribe-input"></Input>
               <Button variant="primary" className="subscribe-btn">
                 Subscribe
               </Button>

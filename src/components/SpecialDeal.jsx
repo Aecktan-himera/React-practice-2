@@ -9,7 +9,6 @@ function SpecialDeal() {
         <img src={Close} />
       </button>
       <p className="special">
-        {" "}
         <img src={Clock} /> Special Deal!
       </p>
       <p className="special-promo">
